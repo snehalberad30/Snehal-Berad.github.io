@@ -1,4 +1,8 @@
 /* Body & general layout */
+
+
+
+
 * {
     transition: 0.2s ease;
 }
@@ -329,4 +333,78 @@ body.dark #dashboard {
 }
 #drivePanel {
   top: 320px;   /* More space – clean difference */
+}
+/* ===================== */
+/* MOBILE RESPONSIVE FIX */
+/* ===================== */
+@media (max-width: 768px) {
+
+  /* BODY */
+  body {
+    margin: 10px;
+  }
+
+  /* HEADING */
+  h1 {
+    font-size: 2rem;
+    flex-wrap: wrap;
+    white-space: normal;
+  }
+
+  h1 .icon {
+    width: 28px;
+  }
+
+  /* VIDEO & CANVAS */
+  video,
+  #overlay {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+  }
+
+  #overlay {
+    position: absolute;
+    top: auto;
+    left: 0;
+    transform: none;
+  }
+
+  /* ROAD & DRIVE PANELS */
+  #roadPanel,
+  #drivePanel {
+    position: static;
+    width: 95%;
+    margin: 15px auto;
+    font-size: 14px;
+  }
+
+  /* TOP RIGHT BUTTONS */
+  #topRightButtons {
+    position: static;
+    flex-direction: row;
+    justify-content: center;
+    margin: 15px 0;
+  }
+
+  #topRightButtons button {
+    width: auto;
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+
+  /* ALL BUTTONS TOUCH FRIENDLY */
+  button {
+    width: 95%;
+    max-width: 350px;
+    margin: 8px auto;
+    font-size: 15px;
+  }
+
+  /* EMERGENCY & LOCATION TEXT */
+  #emergencyDisplay,
+  #locationStatus {
+    font-size: 14px;
+    padding: 8px;
+  }
 }
