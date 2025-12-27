@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EyeGuard</title>
+  <link rel="stylesheet" href="style2.css">
+  <link rel="icon" href="data:,">
+</head>
+<body>
+  
+  <h1>
+    <img src="camera.png" class="icon"> EyeGuard 
+    <img src="camera.png" class="icon">
+  </h1>
+
+  <div id="roadPanel">
+    <h3>Road Condition & Weather</h3>
+
+    <p>🌦 Weather: <span id="weather"></span></p>
+  <p>👁️ Visibility: <span id="visibility"></span></p>
+  <p>🌡 Temperature: <span id="temp"></span></p>
+  <p>💧 Humidity: <span id="humidity"></span></p>
+
+    <p id="roadWarning"></p>
+    <button id="checkRoadBtn">Check Road Condition</button>
+  </div>
+
+  <br><br>
+
+  <div id="drivePanel">
+    <h3>Driving Stats</h3>
+    <p>⏱ Driving Time: <span id="driveTime">0 min</span></p>
+    <p>🚗 Speed: <span id="speed">0 km/h</span></p>
+    <p id="driveAlert"></p>
+  </div>
+
+  <video id="video" width="640" height="480" autoplay muted></video>
+  <p id="status">Status: Active</p>
+  
+  <button id="themeToggle">🌙 Toggle Dark/Light</button>
+
+  <button id="langToggle">🌐 Switch Language
+    <label for="langSelect"></label>
+    <select id="langSelect">
+      <option value="en">English</option>
+      <option value="mr">मराठी</option>
+      <option value="hi">हिंदी</option>
+      <option value="fr">Français</option>
+      <option value="es">Español</option>
+      <option value="de">Deutsch</option>
+    </select>
+  </button>
+
+  <canvas id="overlay" width="640" height="480"></canvas>
+
+  <button id="startBtn">🟢 Start Camera</button>
+  <button id="stopBtn">🔴 Stop Camera</button>
+
+<script>
+  window.onload = function() {
+    if (localStorage.getItem("loggedIn") !== "true") {
+      window.location.href = "login.html";
+    }
+  }
+</script>
+
+<div id="topRightButtons">
+
+  <button id="mapBtn">📍 View Map</button>
+  <button id="voiceBtn">🎤 Voice</button>
+
+  <p id="result" style="font-weight:bold; font-size:16px;">Say a command...</p>
+
+  <button id="logoutBtn">🔓Logout</button>
+</div>
+
+<p id="emergencyDisplay" style="font-weight:bold; color:red; font-size:18px;"></p>
+<button id="emergencyBtn">📞 Emergency Call</button>
+
+<button id="sendLocationBtn" class="btn">Send Live Location📍</button>
+<div id="locationStatus"></div>
+
+<script>
+  document.getElementById("logoutBtn").addEventListener("click", () => {
+    localStorage.removeItem("loggedIn");
+    localStorage.removeItem("username");
+    localStorage.removeItem("email");
+    localStorage.removeItem("mobile");
+    window.location.href = "login.html";
+  });
+</script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/@vladmandic/face-api/dist/face-api.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+
+<script defer src="script3.js"></script>
+
+<script>
+  const WEATHER_API_KEY = "9003f715a38b51c72cd0e90ae4875502"; 
+</script>
+
+</body>
+</html>

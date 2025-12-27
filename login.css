@@ -1,0 +1,105 @@
+/* Body & Layout */
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background: linear-gradient(135deg, #e0eafc, #cfdef3); /* soft gradient background */
+}
+
+/* Heading */
+h1 {
+  font-family: 'Arial', sans-serif;
+  font-size: 2rem;
+  text-align: center;
+  white-space: nowrap;           /* important: prevents wrapping */
+  display: flex;                 /* inline flex for icons + text */
+  justify-content: center;       
+  align-items: center;
+  gap: 11px;                     /* spacing between text & icons */
+  background: linear-gradient(90deg, #1e3a8a, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+  margin-bottom: 30px;
+}
+
+h1 .icon {
+  width: 40px;
+  vertical-align: middle;
+}
+
+/* Login Container */
+.login-container {
+  background: #fff;
+  padding: 40px 50px;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  text-align: center;
+  width: 390px;
+}
+
+/* Input Fields */
+input {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin: 15px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:focus {
+  outline: none;
+  border-color: #1e3a8a;
+  box-shadow: 0 0 8px rgba(30,58,138,0.3);
+}
+
+/* Buttons */
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 8px;
+  background-color: #1e3a8a;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background-color: #3b82f6;
+  transform: scale(1.03);
+}
+
+/* Optional: small text / links */
+.login-container small {
+  display: block;
+  margin-top: 10px;
+  color: #555;
+  font-size: 14px;
+}
+/* Dropdown styling */
+select {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin: 12px 0 20px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  cursor: pointer;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+select:focus {
+  outline: none;
+  border-color: #1e3a8a;
+  box-shadow: 0 0 8px rgba(30,58,138,0.3);
+}
