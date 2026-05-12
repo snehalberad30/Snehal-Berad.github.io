@@ -1,410 +1,280 @@
-/* Body & general layout */
-
-
-
-
 * {
-    transition: 0.2s ease;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
 }
 
 body {
-  font-family: Arial, sans-serif;
-  text-align: center;
-  margin-top: 20px;
-  background: #f0f4f8;
-  color: #333;
+  min-height: 100vh;
+  background: #eef4ff;
+  color: #111827;
 }
+
+/* MAIN 3 COLUMN LAYOUT */
+.app-shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 300px 1fr 220px;
+  gap: 24px;
+  padding: 24px;
+}
+
+/* LEFT */
+.left-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+#roadPanel,
+#drivePanel {
+  background: #1e3a8a;
+  color: white;
+  padding: 22px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(30, 58, 138, 0.25);
+  text-align: left;
+}
+
+#roadPanel h3,
+#drivePanel h3 {
+  font-size: 21px;
+  margin-bottom: 18px;
+}
+
+#roadPanel p,
+#drivePanel p {
+  font-size: 17px;
+  font-weight: 600;
+  margin: 14px 0;
+}
+
+/* CENTER */
+.center-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 h1 {
-  font-family: 'Arial', sans-serif;
-  font-size: 3.5rem;                        /* bigger for impact */
-  text-align: center;
-  background: linear-gradient(90deg, #1e3a8a, #1e3a8a); /* gradient text */
-  -webkit-text-fill-color: transparent;  
--webkit-background-clip: text;   /* show gradient */
-  text-shadow: 2px 2px 8px rgba(0,0,0,0.3); /* depth shadow */
-  margin: 30px 0;
+  font-size: 58px;
+  color: #1e3a8a;
+  margin: 25px 0 35px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  text-shadow: 0 5px 12px rgba(30, 58, 138, 0.25);
 }
 
 h1 .icon {
-  width: 45px;               /* icon size */
-  vertical-align: middle;    /* align with text */
-  margin: 0 12px;            /* spacing from text */
-  transition: transform 0.3s ease; /* hover effect */
+  width: 55px;
+  height: 55px;
 }
 
-h1:hover .icon {
-  transform: rotate(20deg);  /* playful icon effect on hover */
+.camera-box {
+  position: relative;
+  width: 760px;
+  max-width: 100%;
+  height: 520px;
+  background: white;
+  border: 3px solid #1e3a8a;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 14px 30px rgba(30, 58, 138, 0.25);
 }
 
-
-/* Video styling */
-video {
-  border: 2px solid #1e3a8a;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px #1e3a8a;
+video,
+#overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-/* Buttons */
+#status {
+  margin: 22px 0 15px;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+/* BUTTON COMMON */
 button {
-  margin: 10px;
-  padding: 12px 25px;
-  font-size: 16px;
   border: none;
-  border-radius: 8px;
-  background-color: #1e3a8a;
-  color: #fff;
+  border-radius: 12px;
+  background: #1e3a8a;
+  color: white;
+  font-size: 17px;
+  font-weight: 700;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
+  height: 52px;
+  padding: 0 22px;
 }
 
 button:hover {
-  background-color: #3b82f6;
-  transform: scale(1.05);
+  background: #3b82f6;
+  transform: translateY(-2px);
 }
 
-/* Status text blinking */
+/* CENTER BUTTONS PERFECT ALIGNMENT */
+.main-controls,
+.extra-controls,
+.safety-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.main-controls button,
+.extra-controls button,
+.safety-controls button {
+  width: 210px;
+}
+
+.language-box {
+  width: 210px;
+  height: 52px;
+  background: #1e3a8a;
+  color: white;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+}
+
+.language-box select {
+  padding: 6px;
+  border-radius: 6px;
+  border: none;
+}
+
+#emergencyDisplay {
+  margin-top: 15px;
+  color: red;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#locationStatus {
+  margin-top: 12px;
+  font-weight: bold;
+}
+
+/* RIGHT */
+.right-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 25px;
+}
+
+#topRightButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+#topRightButtons button {
+  width: 100%;
+}
+
+#result {
+  text-align: center;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+/* STATUS ALERT */
 #status.alert {
   animation: blinkRed 0.5s infinite alternate;
-  color: red;
 }
 
 @keyframes blinkRed {
-  0% { color: red; }
-  100% { color: darkred; }
+  from {
+    color: red;
+  }
+  to {
+    color: darkred;
+  }
 }
 
-/* Dashboard panel */
-#dashboard {
-  display: inline-block;
-  background-color: #fff;
-  border-radius: 10px;
-  padding: 15px 25px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  margin-top: 20px;
-  font-weight: bold;
-  text-align: left;
-}
-/* Dark mode styles */
+/* DARK MODE */
 body.dark {
-  background: #111;
-  color: #eee;
-}
-body.dark button {
-  background-color: #444;
-}
-body.dark #dashboard {
-  background-color: #222;
-  color: #fff;
-}
-
-/* Canvas overlay positioning */
-#overlay {
-  position: absolute;
-  top: 100px; /* adjust to match video position */
-  left: 50%;
-  transform: translateX(-50%);
-  border-radius: 10px;
-  pointer-events: none; /* user can't click canvas */
-}
-/* Logout button positioning */
-
-
-/* Logout button */
-#logoutBtn {
-  position: absolute;
-  top: 20px;
-  right: 25px;
-  padding: 10px 20px;
-  background-color: #1e3a8a;
-
+  background: #0f172a;
   color: white;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  font-size: 15px;
-  font-weight: bold;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
-  transition: 0.3s ease;
 }
 
-#logoutBtn:hover {
-  background-color: #1e3a8a;
-  transform: scale(1.05);
+body.dark .camera-box {
+  background: #111827;
 }
 
-
-#logoutBtn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-}
-
-#voiceBtn {
-    right: 120px; /* Move voice button to the left of logout */
-}
-/* --- FINAL CLEAN FIX FOR TOP-RIGHT BUTTONS --- */
-
-/* Container for both buttons */
-#topRightButtons {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    display: flex;
-    gap: 15px; /* space between voice & logout button */
-    z-index: 9999;
-}
-
-/* Remove absolute/fixed conflicts from old CSS */
-#logoutBtn,
-#voiceBtn {
-    position: relative !important;
-    top: 0 !important;
-    right: 0 !important;
-    margin: 0 !important;
-}
-#topRightButtons {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    display: flex;
-    gap: 10px;     /* space between buttons */
-    z-index: 9999; /* keeps buttons on top */
-}
-
-#topRightButtons button {
-    padding: 8px 12px;
-    font-size: 15px;
-    border: none;
-    background-color:#1e3a8a; 
-    color: white;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-#topRightButtons button:hover {
-    opacity: 0.85;
-}
-
-/* TOP RIGHT BUTTON BAR */
-#topRightButtons {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    display: flex;
-    gap: 12px;          /* space between buttons */
-    z-index: 9999;
-}
-
-/* SAME SIZE BUTTONS */
-#topRightButtons button {
-    width: 130px;
-    height: 45px;
-    padding: 0;
-    font-size: 16px;
-    font-weight: bold;
-    border: none;
-    border-radius: 8px;
-    background-color: #1e3a8a;
-    color: white;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-/* Hover effect */
-#topRightButtons button:hover {
-    background-color: #3b82f6;
-    transform: scale(1.05);
-}
-
-/* Remove OUTDATED conflicting styling */
-#logoutBtn,
-#voiceBtn,
-#mapBtn {
-    position: static !important;
-    top: 0 !important;
-    right: 0 !important;
-    margin: 0 !important;
-}
-#topRightButtons {
-    position: fixed;
-    top: 20px;      /* distance from top */
-    right: 20px;    /* distance from right */
-    display: flex;
-    flex-direction: column;  /* stack vertically */
-    gap: 10px;      /* space between buttons */
-    z-index: 1000;  /* stay on top */
-}
-
-#topRightButtons button {
-    width: 150px;          /* make all buttons same width */
-    height: 40px;          /* same height */
-    font-size: 14px;       /* readable text */
-    border-radius: 6px;    /* rounded edges */
-}
-#drivePanel {
-  width: 260px;
-  margin: 20px auto;
-  padding: 15px;
-  background: #1e3a8a;   /* ← FIXED: semicolon added */
-  border-radius: 10px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-  font-size: 16px;
-  font-weight: bold;
-  text-align: left;
-  color: white;
-
-}
-
-
-#driveAlert {
-  color: red;
-  font-weight: bold;
-  margin-top: 10px;
-}
-#roadPanel {
-  position: fixed;       /* fixed to screen */
-  top: 20px;             /* distance from top */
-  left: 20px;            /* distance from left */
-  width: 280px;
-  padding: 15px;
-  background: #1e3a8a;
-  color: white;
-  border-radius: 10px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-  font-size: 16px;
-  font-weight: bold;
-  text-align: left;
-  z-index: 1000;         /* on top of other elements */
-}
-
-#roadPanel h3 {
-  text-align: center;
-  margin-bottom: 10px;
-}
-
-#checkRoadBtn {
-  display: block;
-  margin: 10px auto 0 auto;
-  padding: 10px 20px;
-  font-size: 16px;
-  border: none;
-  border-radius: 8px;
-  background-color: #3b82f6;
-  color: white;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-#checkRoadBtn:hover {
-  transform: scale(1.05);
-}
-/* Road Condition Panel */
-#roadPanel {
-  position: fixed;       /* keep fixed on top-left */
-  top: 20px;             /* distance from top */
-  left: 20px;
-  width: 280px;
-  padding: 15px;
-  background: #1e3a8a;
-  color: white;
-  border-radius: 10px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-  font-size: 16px;
-  font-weight: bold;
-  text-align: left;
-  z-index: 1000;
-}
-
-/* Driving Stats Panel - below roadPanel */
-#drivePanel {
-  position: fixed;
-  top: 220px; /* roadPanel top + height + 10px gap */
-  left: 20px;
-  width: 280px;
-  padding: 15px;
-  background: #1e3a8a;
-  color: white;
-  border-radius: 10px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-  font-size: 16px;
-  font-weight: bold;
-  text-align: left;
-  z-index: 1000;
-}
-#drivePanel {
-  top: 320px;   /* More space – clean difference */
-}
-/* ===================== */
-/* MOBILE RESPONSIVE FIX */
-/* ===================== */
-@media (max-width: 768px) {
-
-  /* BODY */
-  body {
-    margin: 10px;
+/* MOBILE */
+@media (max-width: 1100px) {
+  .app-shell {
+    grid-template-columns: 1fr;
   }
 
-  /* HEADING */
   h1 {
-    font-size: 2rem;
-    flex-wrap: wrap;
-    white-space: normal;
+    font-size: 42px;
   }
 
   h1 .icon {
-    width: 28px;
+    width: 40px;
+    height: 40px;
   }
 
-  /* VIDEO & CANVAS */
-  video,
-  #overlay {
+  .camera-box {
+    height: 430px;
+  }
+
+  .right-panel {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .app-shell {
+    padding: 14px;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  .camera-box {
+    height: 300px;
+  }
+
+  .main-controls button,
+  .extra-controls button,
+  .safety-controls button,
+  .language-box {
     width: 100%;
-    height: auto;
-    max-width: 100%;
   }
+}
+h1 {
+  display: flex;
+  justify-content: center;   /* CENTER */
+  align-items: center;
+  gap: 15px;
 
-  #overlay {
-    position: absolute;
-    top: auto;
-    left: 0;
-    transform: none;
-  }
+  text-align: center;
+  width: 100%;
 
-  /* ROAD & DRIVE PANELS */
-  #roadPanel,
-  #drivePanel {
-    position: static;
-    width: 95%;
-    margin: 15px auto;
-    font-size: 14px;
-  }
+  font-size: 48px;
+  font-weight: 900;
+  color: #1e3a8a;
 
-  /* TOP RIGHT BUTTONS */
-  #topRightButtons {
-    position: static;
-    flex-direction: row;
-    justify-content: center;
-    margin: 15px 0;
-  }
+  margin: 25px auto;
+}
 
-  #topRightButtons button {
-    width: auto;
-    padding: 10px 14px;
-    font-size: 13px;
-  }
-
-  /* ALL BUTTONS TOUCH FRIENDLY */
-  button {
-    width: 95%;
-    max-width: 350px;
-    margin: 8px auto;
-    font-size: 15px;
-  }
-
-  /* EMERGENCY & LOCATION TEXT */
-  #emergencyDisplay,
-  #locationStatus {
-    font-size: 14px;
-    padding: 8px;
-  }
+h1 .icon {
+  width: 45px;
+  height: 45px;
 }
